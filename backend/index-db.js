@@ -6,20 +6,20 @@ const knex = require("knex")({
   client: "pg",
   connection: {
     host: 'localhost',
-    port: process.env.DB_PORT || 5434,
+    port: process.env.DB_PORT || 5432,
     database: 'postgres',
     user: 'postgres',
-    password: '1234',
+    password: 'Matvei0508',
   }
 })
 
 router.get('/', async (req, res) => {
   try {
-    const catalog = await knex.select().table("catalog").where(req.query)
+    const catalog = await knex.raw(`SELECT * FROM catalog`)
     if (catalog.length === 0) {
       throw Error("No content")
     } else {
-      res.json(catalog)
+      res.json(catalog.rows)
   }
   } catch (err) {
     res.status(404).send(err.message)

@@ -3,7 +3,7 @@ require("dotenv").config()
 
 const app = express()
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', 'http://localhost:3000'); // разрешает принимать запрос c http://localhost:3000
+  res.append('Access-Control-Allow-Origin', 'http://192.168.1.67:3000'); // разрешает принимать запрос c http://localhost:3000
   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); // какие методы в запросах разрешается принимать
   next();
 });
